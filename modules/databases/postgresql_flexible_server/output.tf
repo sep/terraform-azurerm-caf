@@ -1,8 +1,3 @@
-output "id" {
-  description = "ID of the PostgreSQL flexible server"
-  value       = azurerm_postgresql_flexible_server.postgresql.id
-}
-
 output "location" {
   description = "Azure Region where the resource exists"
   value       = var.location

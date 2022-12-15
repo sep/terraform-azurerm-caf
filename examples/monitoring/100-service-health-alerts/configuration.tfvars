@@ -22,12 +22,12 @@ monitoring = {
     email_alert_settings = {
       email_alert1 = {
         name                    = "email_alert_servicehealth_me"
-        email_address           = "joe@contoso.com"
+        email_address           = "email1@domain"
         use_common_alert_schema = false
       } #remove the following block if additional email alerts aren't needed.
       email_alert2 = {
         name                    = "email_alert_servicehealth_somoneelse"
-        email_address           = "jane@contoso.com"
+        email_address           = "email2@domain"
         use_common_alert_schema = false
       }
     } #add more email alerts by repeating the block.

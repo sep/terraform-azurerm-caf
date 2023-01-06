@@ -4,7 +4,7 @@ module "dynamic_keyvault_secrets" {
 
   source = "../modules/security/dynamic_keyvault_secrets"
 
-  # source = "git::https://github.com/aztfmod/terraform-azurerm-caf.git//modules/security/dynamic_keyvault_secrets?ref=master"
+  # source = "../../sepcaf/modules/security/dynamic_keyvault_secrets?ref=master"
 
   for_each = {
     for keyvault_key, secrets in try(var.dynamic_keyvault_secrets, {}) : keyvault_key => {

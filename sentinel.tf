@@ -1,5 +1,5 @@
 module "sentinel_automation_rules" {
-  source   = "./modules/security/sentinel/automation_rule"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/automation_rule"
   for_each = try(local.security.sentinel_automation_rules, {})
 
   name                                = each.value.name
@@ -14,7 +14,7 @@ module "sentinel_automation_rules" {
 }
 
 module "sentinel_watchlists" {
-  source   = "./modules/security/sentinel/watchlist"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/watchlist"
   for_each = try(local.security.sentinel_watchlists, {})
 
   name                       = each.value.name
@@ -27,7 +27,7 @@ module "sentinel_watchlists" {
 }
 
 module "sentinel_watchlist_items" {
-  source   = "./modules/security/sentinel/watchlist_item"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/watchlist_item"
   for_each = try(local.security.sentinel_watchlist_items, {})
 
   name         = try(each.value.name, null)
@@ -36,7 +36,7 @@ module "sentinel_watchlist_items" {
 }
 
 module "sentinel_ar_fusions" {
-  source   = "./modules/security/sentinel/ar_fusion"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/ar_fusion"
   for_each = try(local.security.sentinel_ar_fusions, {})
 
   name                       = each.value.name
@@ -46,7 +46,7 @@ module "sentinel_ar_fusions" {
 }
 
 module "sentinel_ar_ml_behavior_analytics" {
-  source   = "./modules/security/sentinel/ar_ml_behavior_analytics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/ar_ml_behavior_analytics"
   for_each = try(local.security.sentinel_ar_ml_behavior_analytics, {})
 
   name                       = each.value.name
@@ -56,7 +56,7 @@ module "sentinel_ar_ml_behavior_analytics" {
 }
 
 module "sentinel_ar_ms_security_incidents" {
-  source   = "./modules/security/sentinel/ar_ms_security_incident"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/ar_ms_security_incident"
   for_each = try(local.security.sentinel_ar_ms_security_incidents, {})
 
   name                        = each.value.name
@@ -72,7 +72,7 @@ module "sentinel_ar_ms_security_incidents" {
 }
 
 module "sentinel_ar_scheduled" {
-  source   = "./modules/security/sentinel/ar_scheduled"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/ar_scheduled"
   for_each = try(local.security.sentinel_ar_scheduled, {})
 
   name                       = each.value.name
@@ -94,7 +94,7 @@ module "sentinel_ar_scheduled" {
 }
 
 module "sentinel_dc_aad" {
-  source   = "./modules/security/sentinel/dc_aad"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_aad"
   for_each = try(local.security.sentinel_dc_aad, {})
 
   tenant_id                  = try(each.value.tenant_id, null)
@@ -103,7 +103,7 @@ module "sentinel_dc_aad" {
 }
 
 module "sentinel_dc_app_security" {
-  source   = "./modules/security/sentinel/dc_app_security"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_app_security"
   for_each = try(local.security.sentinel_dc_app_security, {})
 
   tenant_id                  = try(each.value.tenant_id, null)
@@ -114,7 +114,7 @@ module "sentinel_dc_app_security" {
 }
 
 module "sentinel_dc_aws" {
-  source   = "./modules/security/sentinel/dc_aws"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_aws"
   for_each = try(local.security.sentinel_dc_aws, {})
 
   aws_role_arn               = each.value.aws_role_arn
@@ -123,7 +123,7 @@ module "sentinel_dc_aws" {
 }
 
 module "sentinel_dc_azure_threat_protection" {
-  source   = "./modules/security/sentinel/dc_azure_threat_protection"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_azure_threat_protection"
   for_each = try(local.security.sentinel_dc_azure_threat_protection, {})
 
   tenant_id                  = try(each.value.tenant_id, null)
@@ -132,7 +132,7 @@ module "sentinel_dc_azure_threat_protection" {
 }
 
 module "sentinel_dc_ms_threat_protection" {
-  source   = "./modules/security/sentinel/dc_ms_threat_protection"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_ms_threat_protection"
   for_each = try(local.security.sentinel_dc_ms_threat_protection, {})
 
   tenant_id                  = try(each.value.tenant_id, null)
@@ -141,7 +141,7 @@ module "sentinel_dc_ms_threat_protection" {
 }
 
 module "sentinel_dc_office_365" {
-  source   = "./modules/security/sentinel/dc_office_365"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_office_365"
   for_each = try(local.security.sentinel_dc_office_365, {})
 
   tenant_id                  = try(each.value.tenant_id, null)
@@ -153,7 +153,7 @@ module "sentinel_dc_office_365" {
 }
 
 module "sentinel_dc_security_center" {
-  source   = "./modules/security/sentinel/dc_security_center"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_security_center"
   for_each = try(local.security.sentinel_dc_security_center, {})
 
   subscription_id            = try(each.value.subscription_id, null)
@@ -162,7 +162,7 @@ module "sentinel_dc_security_center" {
 }
 
 module "sentinel_dc_threat_intelligence" {
-  source   = "./modules/security/sentinel/dc_threat_intelligence"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/sentinel/dc_threat_intelligence"
   for_each = try(local.security.sentinel_dc_threat_intelligence, {})
 
   tenant_id                  = try(each.value.tenant_id, null)

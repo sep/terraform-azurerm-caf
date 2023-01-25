@@ -1,5 +1,5 @@
 module "container_groups" {
-  source     = "./modules/compute/container_group"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/container_group"
   for_each   = local.compute.container_groups
   depends_on = [module.dynamic_keyvault_secrets]
 
@@ -22,7 +22,7 @@ module "container_groups" {
 }
 
 module "network_profiles" {
-  source   = "./modules/networking/network_profile"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/network_profile"
   for_each = local.networking.network_profiles
 
   base_tags       = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}

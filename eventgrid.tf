@@ -1,5 +1,5 @@
 module "eventgrid_domain" {
-  source   = "./modules/messaging/eventgrid/eventgrid_domain"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/eventgrid/eventgrid_domain"
   for_each = local.messaging.eventgrid_domain
 
   global_settings = local.global_settings
@@ -19,7 +19,7 @@ output "eventgrid_domain" {
 }
 
 module "eventgrid_topic" {
-  source   = "./modules/messaging/eventgrid/eventgrid_topic"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/eventgrid/eventgrid_topic"
   for_each = local.messaging.eventgrid_topic
 
   global_settings = local.global_settings
@@ -37,7 +37,7 @@ output "eventgrid_topic" {
 }
 
 module "eventgrid_event_subscription" {
-  source   = "./modules/messaging/eventgrid/eventgrid_event_subscription"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/eventgrid/eventgrid_event_subscription"
   for_each = local.messaging.eventgrid_event_subscription
 
   global_settings = local.global_settings
@@ -61,7 +61,7 @@ output "eventgrid_event_subscription" {
 }
 
 module "eventgrid_domain_topic" {
-  source   = "./modules/messaging/eventgrid/eventgrid_domain_topic"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/eventgrid/eventgrid_domain_topic"
   for_each = local.messaging.eventgrid_domain_topic
 
   global_settings = local.global_settings

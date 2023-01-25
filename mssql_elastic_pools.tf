@@ -5,7 +5,7 @@ output "mssql_elastic_pools" {
 }
 
 module "mssql_elastic_pools" {
-  source = "./modules/databases/mssql_elastic_pool"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_elastic_pool"
   for_each = {
     for key, value in local.database.mssql_elastic_pools : key => value
     if try(value.lz_key, null) == null
@@ -20,7 +20,7 @@ module "mssql_elastic_pools" {
 }
 
 module "mssql_elastic_pools_remote" {
-  source = "./modules/databases/mssql_elastic_pool"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_elastic_pool"
   for_each = {
     for key, value in local.database.mssql_elastic_pools : key => value
     if try(value.lz_key, null) != null

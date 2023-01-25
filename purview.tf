@@ -1,5 +1,5 @@
 module "purview_accounts" {
-  source   = "./modules/purview/purview_accounts"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/purview/purview_accounts"
   for_each = local.purview.purview_accounts
 
   client_config       = local.client_config

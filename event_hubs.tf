@@ -1,6 +1,6 @@
 
 module "event_hub_namespaces" {
-  source   = "./modules/event_hubs/namespaces"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/namespaces"
   for_each = var.event_hub_namespaces
 
   global_settings  = local.global_settings
@@ -16,7 +16,7 @@ output "event_hub_namespaces" {
 }
 
 module "event_hub_namespace_auth_rules" {
-  source   = "./modules/event_hubs/namespaces/auth_rules"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/namespaces/auth_rules"
   for_each = try(var.event_hub_namespace_auth_rules, {})
 
   client_config   = local.client_config
@@ -36,7 +36,7 @@ output "event_hub_namespace_auth_rules" {
 }
 
 module "event_hub_namespaces_diagnostics" {
-  source   = "./modules/diagnostics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
   for_each = var.event_hub_namespaces
 
   resource_id       = module.event_hub_namespaces[each.key].id
@@ -52,7 +52,7 @@ module "event_hub_namespaces_diagnostics" {
 
 module "event_hub_namespaces_private_endpoints" {
   depends_on = [module.event_hub_namespaces]
-  source     = "./modules/networking/private_endpoint"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/private_endpoint"
   for_each   = local.event_hub_namespaces_private_endpoints
 
   resource_id         = each.value.id
@@ -91,7 +91,7 @@ locals {
 
 
 module "event_hubs" {
-  source     = "./modules/event_hubs/hubs"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/hubs"
   depends_on = [module.event_hub_namespaces]
   for_each   = try(var.event_hubs, {})
 
@@ -109,7 +109,7 @@ output "event_hubs" {
 }
 
 module "event_hub_auth_rules" {
-  source   = "./modules/event_hubs/hubs/auth_rules"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/hubs/auth_rules"
   for_each = try(var.event_hub_auth_rules, {})
 
   client_config   = local.client_config
@@ -131,7 +131,7 @@ output "event_hub_auth_rules" {
 }
 
 module "event_hub_consumer_groups" {
-  source   = "./modules/event_hubs/consumer_groups"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/consumer_groups"
   for_each = try(var.event_hub_consumer_groups, {})
 
   client_config   = local.client_config

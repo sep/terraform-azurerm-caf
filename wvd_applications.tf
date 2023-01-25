@@ -1,5 +1,5 @@
 module "wvd_applications" {
-  source   = "./modules/compute/wvd_applications"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/wvd_applications"
   for_each = local.compute.wvd_applications
 
   global_settings      = local.global_settings

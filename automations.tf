@@ -1,6 +1,6 @@
 
 module "automations" {
-  source   = "./modules/automation"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/automation"
   for_each = local.shared_services.automations
 
   global_settings     = local.global_settings
@@ -25,7 +25,7 @@ output "automations" {
 }
 
 module "automation_log_analytics_links" {
-  source     = "./modules/automation_log_analytics_links"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/automation_log_analytics_links"
   depends_on = [module.automations, module.log_analytics]
   for_each   = local.shared_services.automation_log_analytics_links
 

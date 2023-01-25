@@ -24,7 +24,7 @@
 
 module "azurerm_virtual_hub_route_table_route" {
   depends_on = [module.azurerm_virtual_hub_route_table]
-  source     = "./modules/networking/virtual_hub_route_table_routes"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_hub_route_table_routes"
   for_each   = local.networking.virtual_hub_route_table_routes
 
   client_config = local.client_config

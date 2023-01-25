@@ -1,5 +1,5 @@
 module "wvd_workspaces" {
-  source   = "./modules/compute/wvd_workspace"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/wvd_workspace"
   for_each = local.compute.wvd_workspaces
 
   global_settings     = local.global_settings

@@ -1,5 +1,5 @@
 module "keyvault_certificates" {
-  source     = "./modules/security/keyvault_certificate"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault_certificate"
   depends_on = [module.keyvaults, module.keyvault_access_policies]
 
   for_each = local.security.keyvault_certificates

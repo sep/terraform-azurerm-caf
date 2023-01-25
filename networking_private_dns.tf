@@ -1,7 +1,7 @@
 
 
 module "private_dns" {
-  source   = "./modules/networking/private-dns"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/private-dns"
   for_each = local.networking.private_dns
 
   global_settings     = local.global_settings
@@ -24,7 +24,7 @@ output "private_dns" {
 #
 
 module "private_dns_vnet_links" {
-  source     = "./modules/networking/private_dns_vnet_link"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/private_dns_vnet_link"
   for_each   = try(local.networking.private_dns_vnet_links, {})
   depends_on = [module.private_dns]
 

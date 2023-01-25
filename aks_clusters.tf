@@ -3,7 +3,7 @@ output "aks_clusters" {
 }
 
 module "aks_clusters" {
-  source     = "./modules/compute/aks"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/aks"
   depends_on = [module.networking, module.routes, module.azurerm_firewall_policies, module.application_gateways, module.application_gateway_platforms, module.application_gateway_applications]
   for_each   = local.compute.aks_clusters
 

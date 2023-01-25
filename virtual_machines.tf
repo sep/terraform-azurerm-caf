@@ -1,7 +1,7 @@
 
 
 module "virtual_machines" {
-  source = "./modules/compute/virtual_machine"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine"
   depends_on = [
     module.availability_sets,
     module.dynamic_keyvault_secrets,

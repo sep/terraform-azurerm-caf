@@ -1,5 +1,5 @@
 module "wvd_host_pools" {
-  source   = "./modules/compute/wvd_host_pool"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/wvd_host_pool"
   for_each = local.compute.wvd_host_pools
 
   global_settings     = local.global_settings

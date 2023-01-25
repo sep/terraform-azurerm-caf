@@ -3,7 +3,7 @@
 #
 
 module "vm_extension_monitoring_agent" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value
@@ -20,7 +20,7 @@ module "vm_extension_monitoring_agent" {
 }
 
 module "vm_extension_diagnostics" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value
@@ -40,7 +40,7 @@ module "vm_extension_diagnostics" {
 }
 
 module "vm_extension_microsoft_azure_domainjoin" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value
@@ -55,7 +55,7 @@ module "vm_extension_microsoft_azure_domainjoin" {
 }
 
 module "vm_extension_session_host_dscextension" {
-  source     = "./modules/compute/virtual_machine_extensions"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
   depends_on = [module.vm_extension_microsoft_azure_domainjoin] #refer landingzone.tf for the correct module name.
 
   for_each = {
@@ -72,7 +72,7 @@ module "vm_extension_session_host_dscextension" {
 }
 
 module "vm_extension_custom_scriptextension" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   depends_on = [module.vm_extension_microsoft_azure_domainjoin]
 
@@ -91,7 +91,7 @@ module "vm_extension_custom_scriptextension" {
 }
 
 module "vm_extension_generic" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value
     if try(value.virtual_machine_extensions.generic_extensions, null) != null
@@ -105,7 +105,7 @@ module "vm_extension_generic" {
 }
 
 module "keyvault_for_windows" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value
@@ -122,7 +122,7 @@ module "keyvault_for_windows" {
 }
 
 module "vm_extension_linux_diagnostic" {
-  source = "./modules/compute/virtual_machine_extensions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machines, {}) : key => value

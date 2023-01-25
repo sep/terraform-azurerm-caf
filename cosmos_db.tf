@@ -1,5 +1,5 @@
 module "cosmos_dbs" {
-  source   = "./modules/databases/cosmos_dbs"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/cosmos_dbs"
   for_each = local.database.cosmos_dbs
 
   global_settings     = local.global_settings

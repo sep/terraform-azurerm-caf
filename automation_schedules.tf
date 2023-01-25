@@ -1,6 +1,6 @@
 
 module "automation_schedules" {
-  source   = "./modules/automation/automation_schedule"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/automation/automation_schedule"
   for_each = local.shared_services.automation_schedules
 
   global_settings         = local.global_settings

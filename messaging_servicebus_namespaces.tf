@@ -1,6 +1,6 @@
 module "servicebus_namespaces" {
   depends_on = [module.networking]
-  source     = "./modules/messaging/servicebus/namespace"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/servicebus/namespace"
   for_each   = local.messaging.servicebus_namespaces
 
   global_settings = local.global_settings

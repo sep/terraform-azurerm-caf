@@ -1,6 +1,6 @@
 ##### database_migration_services
 module "database_migration_services" {
-  source = "./modules/databases/database_migration_service"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/database_migration_service"
 
   for_each = local.database.database_migration_services
 
@@ -22,7 +22,7 @@ output "database_migration_services" {
 
 ##### database_migration_projects
 module "database_migration_projects" {
-  source = "./modules/databases/database_migration_project"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/database_migration_project"
 
   for_each = local.database.database_migration_projects
 

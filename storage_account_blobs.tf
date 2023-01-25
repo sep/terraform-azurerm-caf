@@ -10,7 +10,7 @@ resource "time_sleep" "delay" {
 }
 
 module "storage_account_blobs" {
-  source     = "./modules/storage_account/blob"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/storage_account/blob"
   depends_on = [time_sleep.delay]
   for_each   = local.storage.storage_account_blobs
 

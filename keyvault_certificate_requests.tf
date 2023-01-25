@@ -4,7 +4,7 @@
 #
 module "keyvault_certificate_requests" {
   depends_on = [module.keyvault_certificate_issuers, module.domain_name_registrations]
-  source     = "./modules/security/keyvault_certificate_request"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault_certificate_request"
   for_each   = local.security.keyvault_certificate_requests
 
   keyvault_id               = can(each.value.keyvault_id) ? each.value.keyvault_id : local.combined_objects_keyvaults[try(each.value.lz_key, local.client_config.landingzone_key)][each.value.keyvault_key].id

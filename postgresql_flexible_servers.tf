@@ -3,7 +3,7 @@ output "postgresql_flexible_servers" {
 }
 
 module "postgresql_flexible_servers" {
-  source     = "./modules/databases/postgresql_flexible_server"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/postgresql_flexible_server"
   depends_on = [module.keyvaults, module.networking]
   for_each   = local.database.postgresql_flexible_servers
 

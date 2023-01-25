@@ -1,5 +1,5 @@
 module "network_security_groups" {
-  source = "./modules/networking/network_security_group"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/network_security_group"
 
   for_each = {
     for key, value in local.networking.network_security_group_definition : key => value

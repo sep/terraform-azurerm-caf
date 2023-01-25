@@ -1,6 +1,6 @@
 ##### azurerm_data_factory_linked_service_azure_blob_storage
 module "data_factory_linked_service_azure_blob_storage" {
-  source = "./modules/data_factory/linked_services/azure_blob_storage"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/azure_blob_storage"
 
   for_each = local.data_factory.linked_services.azure_blob_storage
 
@@ -29,7 +29,7 @@ output "data_factory_linked_service_azure_blob_storage" {
 
 ##### data_factory_linked_service_cosmosdb
 module "data_factory_linked_service_cosmosdb" {
-  source = "./modules/data_factory/linked_services/cosmosdb"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/cosmosdb"
 
   for_each = local.data_factory.linked_services.cosmosdb
 
@@ -48,7 +48,7 @@ output "data_factory_linked_service_cosmosdb" {
 
 ##### data_factory_linked_service_web
 module "data_factory_linked_service_web" {
-  source = "./modules/data_factory/linked_services/web"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/web"
 
   for_each = local.data_factory.linked_services.web
 
@@ -66,7 +66,7 @@ output "data_factory_linked_service_web" {
 
 ##### data_factory_linked_service_mysql
 module "data_factory_linked_service_mysql" {
-  source   = "./modules/data_factory/linked_services/mysql"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/mysql"
   for_each = local.data_factory.linked_services.mysql
 
   global_settings     = local.global_settings
@@ -79,7 +79,7 @@ module "data_factory_linked_service_mysql" {
 
 ##### data_factory_linked_service_postgresql
 module "data_factory_linked_service_postgresql" {
-  source   = "./modules/data_factory/linked_services/postgresql"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/postgresql"
   for_each = local.data_factory.linked_services.postgresql
 
   global_settings     = local.global_settings
@@ -95,7 +95,7 @@ output "data_factory_linked_service_postgresql" {
 }
 ##### data_factory_linked_service_sql_server
 module "data_factory_linked_service_sql_server" {
-  source   = "./modules/data_factory/linked_services/sql_server"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/sql_server"
   for_each = local.data_factory.linked_services.sql_server
 
   global_settings     = local.global_settings
@@ -111,7 +111,7 @@ output "data_factory_linked_service_sql_server" {
 }
 
 module "data_factory_linked_service_azure_databricks" {
-  source   = "./modules/data_factory/linked_services/azure_databricks"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/azure_databricks"
   for_each = local.data_factory.linked_services.azure_databricks
 
   global_settings = local.global_settings
@@ -141,7 +141,7 @@ output "data_factory_linked_service_azure_databricks" {
 
 
 module "data_factory_linked_service_key_vault" {
-  source   = "./modules/data_factory/linked_services/key_vault"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/linked_services/key_vault"
   for_each = local.data_factory.linked_services.key_vault
 
   global_settings       = local.global_settings

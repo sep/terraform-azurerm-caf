@@ -1,5 +1,5 @@
 module "custom_roles" {
-  source   = "./modules/roles/custom_roles"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/roles/custom_roles"
   for_each = var.custom_role_definitions
 
   global_settings      = local.global_settings

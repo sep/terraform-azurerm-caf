@@ -1,5 +1,5 @@
 module "databricks_workspaces" {
-  source   = "./modules/analytics/databricks_workspace"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/analytics/databricks_workspace"
   for_each = local.database.databricks_workspaces
 
   aml                 = local.combined_objects_machine_learning

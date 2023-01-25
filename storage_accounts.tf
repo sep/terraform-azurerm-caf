@@ -1,6 +1,6 @@
 
 module "storage_accounts" {
-  source   = "./modules/storage_account"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/storage_account"
   for_each = var.storage_accounts
 
   base_tags                 = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
@@ -42,7 +42,7 @@ resource "azurerm_storage_account_customer_managed_key" "cmk" {
 }
 
 module "encryption_scopes" {
-  source = "./modules/storage_account/encryption_scope"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/storage_account/encryption_scope"
   for_each = {
     for key, value in var.storage_accounts : key => value
     if can(value.encryption_scopes)

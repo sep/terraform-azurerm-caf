@@ -1,5 +1,5 @@
 module "lighthouse_definitions" {
-  source = "./modules/security/lighthouse_definition"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/lighthouse_definition"
 
   for_each = local.security.lighthouse_definitions
 

@@ -1,5 +1,5 @@
 module "dedicated_host_groups" {
-  source   = "./modules/compute/dedicated_host_groups"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/dedicated_host_groups"
   for_each = local.compute.dedicated_host_groups
 
   global_settings     = local.global_settings
@@ -19,7 +19,7 @@ output "dedicated_host_groups" {
 
 
 module "dedicated_hosts" {
-  source   = "./modules/compute/dedicated_hosts"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/dedicated_hosts"
   for_each = local.compute.dedicated_hosts
 
   global_settings         = local.global_settings

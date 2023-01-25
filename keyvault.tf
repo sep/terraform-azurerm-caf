@@ -1,6 +1,6 @@
 
 module "keyvaults" {
-  source   = "./modules/security/keyvault"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault"
   for_each = var.keyvaults
 
   global_settings    = local.global_settings
@@ -21,7 +21,7 @@ module "keyvaults" {
 
 
 module "keyvault_access_policies" {
-  source   = "./modules/security/keyvault_access_policies"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault_access_policies"
   for_each = var.keyvault_access_policies
 
   keyvault_key    = each.key
@@ -43,7 +43,7 @@ module "keyvault_access_policies" {
 # Need to separate keyvault policies from azure AD apps to get the keyvault with the default policies.
 # Reason - Azure AD apps passwords are stored into keyvault secrets and combining would create a circular reference
 module "keyvault_access_policies_azuread_apps" {
-  source   = "./modules/security/keyvault_access_policies"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault_access_policies"
   for_each = var.keyvault_access_policies_azuread_apps
 
   keyvault_key    = each.key

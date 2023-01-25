@@ -5,7 +5,7 @@ output "mssql_servers" {
 }
 
 module "mssql_servers" {
-  source     = "./modules/databases/mssql_server"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_server"
   depends_on = [module.keyvault_access_policies, module.keyvault_access_policies_azuread_apps]
   for_each   = local.database.mssql_servers
 
@@ -58,7 +58,7 @@ resource "azurerm_mssql_server_extended_auditing_policy" "mssql" {
 }
 
 module "mssql_failover_groups" {
-  source   = "./modules/databases/mssql_server/failover_group"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_server/failover_group"
   for_each = local.database.mssql_failover_groups
 
   global_settings     = local.global_settings

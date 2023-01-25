@@ -1,6 +1,6 @@
 
 module "log_analytics" {
-  source   = "./modules/log_analytics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/log_analytics"
   for_each = var.log_analytics
 
   global_settings     = local.global_settings
@@ -11,7 +11,7 @@ module "log_analytics" {
 }
 
 module "log_analytics_diagnostics" {
-  source   = "./modules/diagnostics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
   for_each = var.log_analytics
 
   resource_id       = module.log_analytics[each.key].id
@@ -25,7 +25,7 @@ output "log_analytics" {
 }
 
 module "log_analytics_storage_insights" {
-  source   = "./modules/monitoring/log_analytics_storage_insights"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/log_analytics_storage_insights"
   for_each = local.shared_services.log_analytics_storage_insights
 
   global_settings = local.global_settings

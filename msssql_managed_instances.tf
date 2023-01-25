@@ -8,7 +8,7 @@ output "mssql_managed_instances_secondary" {
 }
 
 module "mssql_managed_instances" {
-  source     = "./modules/databases/mssql_managed_instance"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance"
   for_each   = local.database.mssql_managed_instances
   depends_on = [module.routes]
 
@@ -25,7 +25,7 @@ module "mssql_managed_instances" {
 }
 
 module "mssql_managed_instances_secondary" {
-  source     = "./modules/databases/mssql_managed_instance"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance"
   for_each   = local.database.mssql_managed_instances_secondary
   depends_on = [module.routes]
 
@@ -41,7 +41,7 @@ module "mssql_managed_instances_secondary" {
 }
 
 module "mssql_mi_failover_groups" {
-  source   = "./modules/databases/mssql_managed_instance/failover_group"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance/failover_group"
   for_each = local.database.mssql_mi_failover_groups
 
   global_settings     = local.global_settings
@@ -54,7 +54,7 @@ module "mssql_mi_failover_groups" {
 }
 
 module "mssql_mi_administrators" {
-  source = "./modules/databases/mssql_managed_instance/administrator"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance/administrator"
 
   depends_on = [module.azuread_roles_sql_mi, module.azuread_roles_sql_mi_secondary]
   for_each   = local.database.mssql_mi_administrators
@@ -69,7 +69,7 @@ module "mssql_mi_administrators" {
 }
 
 module "mssql_mi_secondary_tde" {
-  source = "./modules/databases/mssql_managed_instance/tde"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance/tde"
 
   //depends_on =
   for_each = local.database.mssql_mi_secondary_tdes
@@ -84,7 +84,7 @@ module "mssql_mi_secondary_tde" {
 
 #Both initial setup and rotation of the TDE protector must be done on the secondary first, and then on primary.
 module "mssql_mi_tde" {
-  source     = "./modules/databases/mssql_managed_instance/tde"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_instance/tde"
   depends_on = [module.mssql_mi_secondary_tde]
 
   //depends_on =

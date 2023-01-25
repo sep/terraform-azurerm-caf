@@ -12,7 +12,7 @@ output "virtual_hubs" {
 }
 
 module "virtual_hubs" {
-  source   = "./modules/networking/virtual_wan/virtual_hub"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_wan/virtual_hub"
   for_each = local.networking.virtual_hubs
 
   client_config       = local.client_config

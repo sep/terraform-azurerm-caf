@@ -1,6 +1,6 @@
 
 module "resource_groups" {
-  source = "./modules/resource_group"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/resource_group"
   for_each = {
     for key, value in try(var.resource_groups, {}) : key => value
     if try(value.reuse, false) == false
@@ -15,7 +15,7 @@ module "resource_groups" {
 
 module "resource_group_reused" {
   depends_on = [module.resource_groups]
-  source     = "./modules/resource_group_reused"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/resource_group_reused"
   for_each = {
     for key, value in try(var.resource_groups, {}) : key => value
     if try(value.reuse, false) == true

@@ -6,7 +6,7 @@
 
 # Module for the CAf variable azuread_apps
 module "azuread_applications" {
-  source     = "./modules/azuread/applications"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/azuread/applications"
   depends_on = [module.keyvault_access_policies]
   for_each   = local.azuread.azuread_apps
 
@@ -26,7 +26,7 @@ output "aad_apps" {
 
 # Module for the CAf variable azuread_applications
 module "azuread_applications_v1" {
-  source   = "./modules/azuread/applications_v1"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/azuread/applications_v1"
   for_each = local.azuread.azuread_applications
 
   azuread_api_permissions = try(local.azuread.azuread_api_permissions[each.key], {})

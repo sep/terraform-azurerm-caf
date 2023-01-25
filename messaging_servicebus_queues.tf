@@ -1,6 +1,6 @@
 module "servicebus_queues" {
   depends_on = [module.servicebus_namespaces]
-  source     = "./modules/messaging/servicebus/queue"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/messaging/servicebus/queue"
   for_each   = local.messaging.servicebus_queues
 
   global_settings = local.global_settings

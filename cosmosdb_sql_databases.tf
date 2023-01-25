@@ -3,7 +3,7 @@ output "cosmosdb_sql_databases" {
 }
 
 module "cosmosdb_sql_databases" {
-  source   = "./modules/databases/cosmos_dbs/sql_database"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/cosmos_dbs/sql_database"
   for_each = local.database.cosmosdb_sql_databases
 
   global_settings = local.global_settings

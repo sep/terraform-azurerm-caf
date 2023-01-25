@@ -1,5 +1,5 @@
 module "aro" {
-  source     = "./modules/compute/azure_redhat_openshift"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/azure_redhat_openshift"
   for_each   = local.compute.aro_clusters
   depends_on = [time_sleep.azurerm_role_assignment_for]
 

@@ -1,5 +1,5 @@
 module "express_route_connections" {
-  source   = "./modules/networking/express_route_connection"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/express_route_connection"
   for_each = try(local.networking.express_route_connections, {})
 
   client_config            = local.client_config

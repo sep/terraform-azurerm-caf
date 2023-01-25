@@ -1,7 +1,7 @@
 
 
 module "ip_groups" {
-  source   = "./modules/networking/ip_group"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/ip_group"
   for_each = local.networking.ip_groups
 
   global_settings     = local.global_settings

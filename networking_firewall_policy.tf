@@ -1,6 +1,6 @@
 
 module "azurerm_firewall_policies" {
-  source = "./modules/networking/firewall_policies"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_policies"
   for_each = {
     for key, value in local.networking.azurerm_firewall_policies : key => value
     if try(value.base_policy, null) == null
@@ -14,7 +14,7 @@ module "azurerm_firewall_policies" {
 }
 
 module "azurerm_firewall_policies_child" {
-  source = "./modules/networking/firewall_policies"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_policies"
   for_each = {
     for key, value in local.networking.azurerm_firewall_policies : key => value
     if try(value.base_policy, null) != null
@@ -45,7 +45,7 @@ resource "time_sleep" "after_azurerm_firewall_policies" {
 }
 
 module "azurerm_firewall_policy_rule_collection_groups" {
-  source   = "./modules/networking/firewall_policy_rule_collection_groups"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_policy_rule_collection_groups"
   for_each = local.networking.azurerm_firewall_policy_rule_collection_groups
 
   depends_on = [

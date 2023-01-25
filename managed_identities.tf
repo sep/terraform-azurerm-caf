@@ -1,6 +1,6 @@
 
 module "managed_identities" {
-  source   = "./modules/security/managed_identity"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/managed_identity"
   for_each = var.managed_identities
 
   client_config       = local.client_config

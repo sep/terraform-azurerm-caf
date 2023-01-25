@@ -1,6 +1,6 @@
 
 module "subscriptions" {
-  source = "./modules/subscriptions"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/subscriptions"
 
   for_each = var.subscriptions
 
@@ -12,7 +12,7 @@ module "subscriptions" {
 }
 
 module "subscription_billing_role_assignments" {
-  source   = "./modules/subscription_billing_role_assignment"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/subscription_billing_role_assignment"
   for_each = var.subscription_billing_role_assignments
 
   billing_role_definition_name = each.value.billing_role_definition_name

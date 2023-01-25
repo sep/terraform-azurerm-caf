@@ -1,5 +1,5 @@
 module "batch_accounts" {
-  source   = "./modules/compute/batch/batch_account"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/batch/batch_account"
   for_each = local.compute.batch_accounts
 
   global_settings     = local.global_settings

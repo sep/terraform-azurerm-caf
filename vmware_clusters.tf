@@ -1,6 +1,6 @@
 module "vmware_private_clouds" {
   depends_on = [module.dynamic_keyvault_secrets]
-  source     = "./modules/compute/vmware_private_clouds"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/vmware_private_clouds"
   for_each   = local.compute.vmware_private_clouds
 
   global_settings          = local.global_settings
@@ -18,7 +18,7 @@ output "vmware_private_clouds" {
 }
 
 module "vmware_clusters" {
-  source          = "./modules/compute/vmware_clusters"
+  source          = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/vmware_clusters"
   for_each        = local.compute.vmware_clusters
   global_settings = local.global_settings
   client_config   = local.client_config
@@ -33,7 +33,7 @@ output "vmware_clusters" {
 }
 
 module "vmware_express_route_authorizations" {
-  source          = "./modules/compute/vmware_express_route_authorizations"
+  source          = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/vmware_express_route_authorizations"
   for_each        = local.compute.vmware_express_route_authorizations
   global_settings = local.global_settings
   client_config   = local.client_config

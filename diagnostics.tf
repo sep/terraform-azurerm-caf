@@ -23,7 +23,7 @@ output "diagnostics" {
 }
 
 module "diagnostic_storage_accounts" {
-  source   = "./modules/storage_account"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/storage_account"
   for_each = local.diagnostics.diagnostic_storage_accounts
 
   global_settings     = local.global_settings
@@ -47,7 +47,7 @@ resource "azurerm_storage_account_customer_managed_key" "diasacmk" {
 }
 
 module "diagnostic_event_hub_namespaces" {
-  source   = "./modules/event_hubs/namespaces"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/event_hubs/namespaces"
   for_each = local.diagnostics.diagnostic_event_hub_namespaces
 
   global_settings = local.global_settings
@@ -58,7 +58,7 @@ module "diagnostic_event_hub_namespaces" {
 }
 
 module "diagnostic_event_hub_namespaces_diagnostics" {
-  source   = "./modules/diagnostics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
   for_each = local.diagnostics.diagnostic_event_hub_namespaces
 
   resource_id       = module.diagnostic_event_hub_namespaces[each.key].id
@@ -68,7 +68,7 @@ module "diagnostic_event_hub_namespaces_diagnostics" {
 }
 
 module "diagnostic_log_analytics" {
-  source   = "./modules/log_analytics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/log_analytics"
   for_each = local.diagnostics.diagnostic_log_analytics
 
   global_settings     = local.global_settings
@@ -80,7 +80,7 @@ module "diagnostic_log_analytics" {
 }
 
 module "diagnostic_log_analytics_diagnostics" {
-  source   = "./modules/diagnostics"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
   for_each = local.diagnostics.diagnostic_log_analytics
 
   resource_id       = module.diagnostic_log_analytics[each.key].id

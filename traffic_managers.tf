@@ -1,5 +1,5 @@
 module "traffic_manager_profile" {
-  source   = "./modules/networking/traffic_manager/traffic_manager_profile"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/traffic_manager/traffic_manager_profile"
   for_each = local.networking.traffic_manager_profile
 
   settings            = each.value
@@ -14,7 +14,7 @@ output "traffic_manager_profile" {
 
 module "traffic_manager_external_endpoint" {
   depends_on = [module.traffic_manager_profile]
-  source     = "./modules/networking/traffic_manager/traffic_manager_external_endpoint"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/traffic_manager/traffic_manager_external_endpoint"
   for_each   = local.networking.traffic_manager_external_endpoint
 
   settings   = each.value
@@ -26,7 +26,7 @@ output "traffic_manager_external_endpoint" {
 
 module "traffic_manager_nested_endpoint" {
   depends_on         = [module.traffic_manager_profile]
-  source             = "./modules/networking/traffic_manager/traffic_manager_nested_endpoint"
+  source             = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/traffic_manager/traffic_manager_nested_endpoint"
   for_each           = local.networking.traffic_manager_nested_endpoint
   settings           = each.value
   target_resource_id = local.combined_objects_traffic_manager_profile[try(each.value.target_traffic_manager_profile.lz_key, local.client_config.landingzone_key)][each.value.target_traffic_manager_profile.key].id
@@ -39,7 +39,7 @@ output "traffic_manager_nested_endpoint" {
 
 module "traffic_manager_azure_endpoint" {
   depends_on = [module.traffic_manager_profile]
-  source     = "./modules/networking/traffic_manager/traffic_manager_azure_endpoint"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/traffic_manager/traffic_manager_azure_endpoint"
   for_each   = local.networking.traffic_manager_azure_endpoint
   settings   = each.value
   profile_id = local.combined_objects_traffic_manager_profile[try(each.value.traffic_manager_profile.lz_key, local.client_config.landingzone_key)][each.value.traffic_manager_profile.key].id

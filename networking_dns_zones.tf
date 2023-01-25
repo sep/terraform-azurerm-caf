@@ -1,5 +1,5 @@
 module "dns_zones" {
-  source   = "./modules/networking/dns_zone"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/dns_zone"
   for_each = try(local.networking.dns_zones, {})
 
   base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
@@ -22,7 +22,7 @@ output "dns_zones" {
 # Create records on remote DNS zones
 #
 module "dns_zone_records" {
-  source     = "./modules/networking/dns_zone/records"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/dns_zone/records"
   for_each   = try(local.networking.dns_zone_records, {})
   depends_on = [module.dns_zones]
 

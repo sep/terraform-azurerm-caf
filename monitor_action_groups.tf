@@ -1,5 +1,5 @@
 module "monitor_action_groups" {
-  source              = "./modules/monitoring/monitor_action_group"
+  source              = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/monitor_action_group"
   for_each            = local.shared_services.monitor_action_groups
   global_settings     = local.global_settings
   settings            = each.value

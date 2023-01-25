@@ -5,7 +5,7 @@ output "mariadb_servers" {
 }
 
 module "mariadb_servers" {
-  source     = "./modules/databases/mariadb_server"
+  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mariadb_server"
   depends_on = [module.keyvault_access_policies]
   for_each   = local.database.mariadb_servers
 

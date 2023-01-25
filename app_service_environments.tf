@@ -1,6 +1,6 @@
 
 module "app_service_environments" {
-  source = "./modules/webapps/ase"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/ase"
 
   for_each = local.webapp.app_service_environments
 
@@ -29,7 +29,7 @@ output "app_service_environments" {
 
 
 module "app_service_environments_v3" {
-  source = "./modules/webapps/asev3"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/asev3"
 
   for_each = local.webapp.app_service_environments_v3
 

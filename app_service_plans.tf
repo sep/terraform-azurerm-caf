@@ -1,6 +1,6 @@
 
 module "app_service_plans" {
-  source = "./modules/webapps/asp"
+  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/asp"
 
   for_each = local.webapp.app_service_plans
 

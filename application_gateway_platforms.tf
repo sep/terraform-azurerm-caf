@@ -1,5 +1,5 @@
 module "application_gateway_platforms" {
-  source   = "./modules/networking/application_gateway_platform"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/application_gateway_platform"
   for_each = local.networking.application_gateway_platforms
 
   depends_on = [module.keyvault_certificates, module.keyvault_certificate_requests, module.application_gateway_waf_policies]

@@ -1,5 +1,5 @@
 module "api_management" {
-  source   = "./modules/apim/api_management"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management"
   for_each = local.apim.api_management
 
   global_settings = local.global_settings
@@ -20,7 +20,7 @@ output "api_management" {
 }
 
 module "api_management_api" {
-  source   = "./modules/apim/api_management_api"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api"
   for_each = local.apim.api_management_api
 
   global_settings = local.global_settings
@@ -40,7 +40,7 @@ output "api_management_api" {
 }
 
 module "api_management_logger" {
-  source   = "./modules/apim/api_management_logger"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_logger"
   for_each = local.apim.api_management_logger
 
   global_settings = local.global_settings
@@ -60,7 +60,7 @@ output "api_management_logger" {
   value = module.api_management_logger
 }
 module "api_management_api_diagnostic" {
-  source   = "./modules/apim/api_management_api_diagnostic"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api_diagnostic"
   for_each = local.apim.api_management_api_diagnostic
 
   global_settings = local.global_settings
@@ -82,7 +82,7 @@ output "api_management_api_diagnostic" {
   value = module.api_management_api_diagnostic
 }
 module "api_management_api_operation" {
-  source   = "./modules/apim/api_management_api_operation"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api_operation"
   for_each = local.apim.api_management_api_operation
 
   global_settings = local.global_settings
@@ -103,7 +103,7 @@ output "api_management_api_operation" {
 }
 
 module "api_management_backend" {
-  source   = "./modules/apim/api_management_backend"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_backend"
   for_each = local.apim.api_management_backend
 
   global_settings = local.global_settings
@@ -123,7 +123,7 @@ output "api_management_backend" {
 }
 
 module "api_management_api_policy" {
-  source   = "./modules/apim/api_management_api_policy"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api_policy"
   for_each = local.apim.api_management_api_policy
 
   global_settings = local.global_settings
@@ -144,7 +144,7 @@ output "api_management_api_policy" {
 }
 
 module "api_management_api_operation_tag" {
-  source   = "./modules/apim/api_management_api_operation_tag"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api_operation_tag"
   for_each = local.apim.api_management_api_operation_tag
 
   api_operation_id = can(each.value.api_operation.id) ? each.value.api_operation.id : local.combined_objects_api_management_api_operation[try(each.value.api_operation.lz_key, local.client_config.landingzone_key)][each.value.api_operation.key].id
@@ -161,7 +161,7 @@ output "api_management_api_operation_tag" {
   value = module.api_management_api_operation_tag
 }
 module "api_management_api_operation_policy" {
-  source   = "./modules/apim/api_management_api_operation_policy"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_api_operation_policy"
   for_each = local.apim.api_management_api_operation_policy
 
   global_settings = local.global_settings
@@ -183,7 +183,7 @@ output "api_management_api_operation_policy" {
 }
 
 module "api_management_certificate" {
-  source   = "./modules/apim/api_management_certificate"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_certificate"
   for_each = local.apim.api_management_certificate
 
   global_settings = local.global_settings
@@ -206,7 +206,7 @@ output "api_management_certificate" {
 }
 
 module "api_management_custom_domain" {
-  source   = "./modules/apim/api_management_custom_domain"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_custom_domain"
   for_each = local.apim.api_management_custom_domain
 
   global_settings = local.global_settings
@@ -226,7 +226,7 @@ output "api_management_custom_domain" {
 }
 
 module "api_management_diagnostic" {
-  source   = "./modules/apim/api_management_diagnostic"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_diagnostic"
   for_each = local.apim.api_management_diagnostic
 
   global_settings = local.global_settings
@@ -249,7 +249,7 @@ output "api_management_diagnostic" {
 }
 
 module "api_management_user" {
-  source   = "./modules/apim/api_management_user"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_user"
   for_each = local.apim.api_management_user
 
   global_settings = local.global_settings
@@ -269,7 +269,7 @@ output "api_management_user" {
 }
 
 module "api_management_gateway" {
-  source   = "./modules/apim/api_management_gateway"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_gateway"
   for_each = local.apim.api_management_gateway
 
   global_settings = local.global_settings
@@ -286,7 +286,7 @@ output "api_management_gateway" {
 }
 
 module "api_management_gateway_api" {
-  source   = "./modules/apim/api_management_gateway_api"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_gateway_api"
   for_each = local.apim.api_management_gateway_api
 
   global_settings = local.global_settings
@@ -305,7 +305,7 @@ output "api_management_gateway_api" {
 }
 
 module "api_management_group" {
-  source   = "./modules/apim/api_management_group"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_group"
   for_each = local.apim.api_management_group
 
   global_settings = local.global_settings
@@ -322,7 +322,7 @@ output "api_management_group" {
 }
 
 module "api_management_subscription" {
-  source   = "./modules/apim/api_management_subscription"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_subscription"
   for_each = local.apim.api_management_subscription
 
   global_settings = local.global_settings
@@ -343,7 +343,7 @@ output "api_management_subscription" {
 }
 
 module "api_management_product" {
-  source   = "./modules/apim/api_management_product"
+  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/apim/api_management_product"
   for_each = local.apim.api_management_product
 
   global_settings = local.global_settings

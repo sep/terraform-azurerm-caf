@@ -1,5 +1,5 @@
 module "application_gateway_applications" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/application_gateway_application"
+  source   = "./modules/networking/application_gateway_application"
   for_each = local.networking.application_gateway_applications_v1
 
   client_config                    = local.client_config

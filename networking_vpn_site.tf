@@ -11,7 +11,7 @@ output "vpn_sites" {
 
 module "vpn_sites" {
   depends_on = [module.virtual_wans]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/vpn_site"
+  source     = "./modules/networking/vpn_site"
   for_each   = local.networking.vpn_sites
 
   global_settings = local.global_settings

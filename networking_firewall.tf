@@ -2,7 +2,7 @@ module "azurerm_firewalls" {
   depends_on = [
     module.azurerm_firewall_policies
   ]
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall"
+  source   = "./modules/networking/firewall"
   for_each = local.networking.azurerm_firewalls
 
   client_config       = local.client_config
@@ -28,7 +28,7 @@ module "azurerm_firewalls" {
 # Firewall rules to apply to the firewall when not using firewall manager.
 
 module "azurerm_firewall_network_rule_collections" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_network_rule_collections"
+  source = "./modules/networking/firewall_network_rule_collections"
   for_each = {
     for key, firewall in local.networking.azurerm_firewalls : key => firewall
     if lookup(firewall, "azurerm_firewall_network_rule_collections", null) != null
@@ -43,7 +43,7 @@ module "azurerm_firewall_network_rule_collections" {
 }
 
 module "azurerm_firewall_application_rule_collections" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_application_rule_collections"
+  source = "./modules/networking/firewall_application_rule_collections"
   for_each = {
     for key, firewall in local.networking.azurerm_firewalls : key => firewall
     if lookup(firewall, "azurerm_firewall_application_rule_collections", null) != null
@@ -59,7 +59,7 @@ module "azurerm_firewall_application_rule_collections" {
 
 
 module "azurerm_firewall_nat_rule_collections" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/firewall_nat_rule_collections"
+  source = "./modules/networking/firewall_nat_rule_collections"
   for_each = {
     for key, firewall in local.networking.azurerm_firewalls : key => firewall
     if lookup(firewall, "azurerm_firewall_nat_rule_collections", null) != null

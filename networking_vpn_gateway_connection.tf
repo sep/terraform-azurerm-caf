@@ -11,7 +11,7 @@ output "vpn_gateway_connections" {
 
 module "vpn_gateway_connections" {
   depends_on = [module.virtual_wans, module.vpn_sites, module.virtual_hubs]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/vpn_gateway_connection"
+  source     = "./modules/networking/vpn_gateway_connection"
   for_each   = local.networking.vpn_gateway_connections
 
   settings        = each.value

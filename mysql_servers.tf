@@ -5,7 +5,7 @@ output "mysql_servers" {
 }
 
 module "mysql_servers" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mysql_server"
+  source     = "./modules/databases/mysql_server"
   depends_on = [module.keyvault_access_policies, module.keyvault_access_policies_azuread_apps]
   for_each   = local.database.mysql_servers
 

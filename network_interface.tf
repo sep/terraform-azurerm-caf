@@ -1,5 +1,5 @@
 module "network_interface_backend_address_pool_association" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/network_interface_backend_address_pool_association"
+  source   = "./modules/networking/network_interface_backend_address_pool_association"
   for_each = local.networking.network_interface_backend_address_pool_association
 
   global_settings = local.global_settings

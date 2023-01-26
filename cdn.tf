@@ -1,5 +1,5 @@
 module "cdn_endpoint" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/cdn_endpoint"
+  source   = "./modules/networking/cdn_endpoint"
   for_each = local.networking.cdn_endpoint
 
   global_settings = local.global_settings
@@ -19,7 +19,7 @@ output "cdn_endpoint" {
 }
 
 module "cdn_profile" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/cdn_profile"
+  source   = "./modules/networking/cdn_profile"
   for_each = local.networking.cdn_profile
 
   global_settings = local.global_settings

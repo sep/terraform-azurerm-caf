@@ -1,5 +1,5 @@
 module "virtual_network_gateways" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_network_gateways"
+  source   = "./modules/networking/virtual_network_gateways"
   for_each = try(local.networking.virtual_network_gateways, {})
 
   location            = can(local.global_settings.regions[each.value.region]) ? local.global_settings.regions[each.value.region] : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].location
@@ -17,7 +17,7 @@ module "virtual_network_gateways" {
 }
 
 module "virtual_network_gateway_connections" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_network_gateway_connections"
+  source   = "./modules/networking/virtual_network_gateway_connections"
   for_each = try(local.networking.virtual_network_gateway_connections, {})
 
   location                 = can(local.global_settings.regions[each.value.region]) ? local.global_settings.regions[each.value.region] : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].location
@@ -52,7 +52,7 @@ module "virtual_network_gateway_connections" {
 }
 
 module "local_network_gateways" {
-  source              = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/local_network_gateways"
+  source              = "./modules/networking/local_network_gateways"
   for_each            = try(local.networking.local_network_gateways, {})
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
   location            = can(local.global_settings.regions[each.value.region]) ? local.global_settings.regions[each.value.region] : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].location

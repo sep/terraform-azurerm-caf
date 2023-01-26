@@ -1,6 +1,6 @@
 module "runbooks_ansible_playbooks" {
   depends_on = [module.virtual_machines, module.keyvaults, module.public_ip_addresses]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/runbooks/ansible_playbook"
+  source     = "./modules/compute/runbooks/ansible_playbook"
   for_each = {
     for key, value in try(var.compute.runbooks, {}) : key => value
     if try(value.type, "") == "ansible_playbook"

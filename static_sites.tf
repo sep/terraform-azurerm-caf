@@ -2,7 +2,7 @@
 # Ref : https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/
 
 module "static_sites" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/static_site"
+  source   = "./modules/webapps/static_site"
   for_each = local.webapp.static_sites
 
   name                = each.value.name

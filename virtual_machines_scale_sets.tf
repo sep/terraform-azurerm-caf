@@ -1,7 +1,7 @@
 
 
 module "virtual_machine_scale_sets" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set"
+  source = "./modules/compute/virtual_machine_scale_set"
   depends_on = [
     module.availability_sets,
     module.dynamic_keyvault_secrets,

@@ -1,6 +1,6 @@
 # Digital Twins Instaces
 module "digital_twins_instances" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/iot/digital_twins/digital_twins_instance"
+  source = "./modules/iot/digital_twins/digital_twins_instance"
 
   for_each = local.iot.digital_twins_instances
 
@@ -20,7 +20,7 @@ output "digital_twins_instances" {
 
 # Digital Twins  Endpoint Eventhub
 module "digital_twins_endpoint_eventhub" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/iot/digital_twins/digital_twins_endpoint_eventhub"
+  source = "./modules/iot/digital_twins/digital_twins_endpoint_eventhub"
 
   for_each = local.iot.digital_twins_endpoint_eventhubs
 
@@ -38,7 +38,7 @@ output "digital_twins_endpoint_eventhub" {
 }
 
 module "digital_twins_endpoint_eventgrid" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/iot/digital_twins/digital_twins_endpoint_eventgrid"
+  source = "./modules/iot/digital_twins/digital_twins_endpoint_eventgrid"
 
   for_each = local.iot.digital_twins_endpoint_eventgrids
 
@@ -57,7 +57,7 @@ output "digital_twins_endpoint_eventgrid" {
 }
 
 module "digital_twins_endpoint_servicebus" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/iot/digital_twins/digital_twins_endpoint_servicebus"
+  source = "./modules/iot/digital_twins/digital_twins_endpoint_servicebus"
 
   for_each = local.iot.digital_twins_endpoint_servicebuses
 

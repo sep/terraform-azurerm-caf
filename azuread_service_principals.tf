@@ -3,7 +3,7 @@
 #
 
 module "azuread_service_principals" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/azuread/service_principal"
+  source   = "./modules/azuread/service_principal"
   for_each = local.azuread.azuread_service_principals
 
   client_config           = local.client_config

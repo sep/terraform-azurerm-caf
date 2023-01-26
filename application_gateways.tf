@@ -1,6 +1,6 @@
 module "application_gateways" {
   depends_on = [module.keyvault_certificates, module.keyvault_certificate_requests, module.application_gateway_waf_policies]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/application_gateway"
+  source     = "./modules/networking/application_gateway"
   for_each   = local.networking.application_gateways
 
   app_services                     = local.combined_objects_app_services

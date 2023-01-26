@@ -1,6 +1,6 @@
 
 module "redis_caches" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/redis_cache"
+  source     = "./modules/redis_cache"
   depends_on = [module.networking]
   for_each   = local.database.azurerm_redis_caches
 

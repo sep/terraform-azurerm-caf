@@ -1,5 +1,5 @@
 module "front_doors" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/front_door"
+  source   = "./modules/networking/front_door"
   for_each = local.networking.front_doors
 
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
@@ -40,7 +40,7 @@ data "azuread_service_principal" "front_door" {
 }
 
 module "front_doors_keyvault_access_policy" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/keyvault_access_policies"
+  source = "./modules/security/keyvault_access_policies"
   for_each = {
     for key, value in local.networking.front_doors : key => value
     if try(value.keyvault_key, null) != null
@@ -59,7 +59,7 @@ module "front_doors_keyvault_access_policy" {
 }
 
 module "frontdoor_rules_engine" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/frontdoor_rules_engine"
+  source   = "./modules/networking/frontdoor_rules_engine"
   for_each = local.networking.frontdoor_rules_engine
 
   global_settings     = local.global_settings

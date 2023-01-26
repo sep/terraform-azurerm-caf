@@ -1,6 +1,6 @@
 
 module "random_strings" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/random_string"
+  source   = "./modules/random_string"
   for_each = try(var.random_strings, {})
 
   random_string_length                   = each.value.length

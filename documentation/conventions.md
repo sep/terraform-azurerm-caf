@@ -133,7 +133,7 @@ At the root of the module, the call and iteration for the sub modules is declare
 
 ```hcl
 module "networking" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_network"
+  source   = "./modules/networking/virtual_network"
   for_each = local.networking.vnets
 
   location                          = lookup(each.value, "region", null) == null ? local.resource_groups[each.value.resource_group_key].location : local.global_settings.regions[each.value.region]

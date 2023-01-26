@@ -4,7 +4,7 @@ output "mysql_flexible_server" {
 }
 
 module "mysql_flexible_server" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mysql_flexible_server"
+  source     = "./modules/databases/mysql_flexible_server"
   depends_on = [module.keyvaults, module.networking]
   for_each   = local.database.mysql_flexible_server
 

@@ -5,7 +5,7 @@ output "mssql_managed_databases" {
 }
 
 module "mssql_managed_databases" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_database"
+  source   = "./modules/databases/mssql_managed_database"
   for_each = local.database.mssql_managed_databases
 
   global_settings     = local.global_settings
@@ -17,7 +17,7 @@ module "mssql_managed_databases" {
 }
 
 module "mssql_managed_databases_restore" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_database"
+  source   = "./modules/databases/mssql_managed_database"
   for_each = local.database.mssql_managed_databases_restore
 
   global_settings     = local.global_settings
@@ -30,7 +30,7 @@ module "mssql_managed_databases_restore" {
 }
 
 module "mssql_managed_databases_backup_ltr" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_managed_database/backup_ltr"
+  source   = "./modules/databases/mssql_managed_database/backup_ltr"
   for_each = local.database.mssql_managed_databases_backup_ltr
 
   settings            = each.value

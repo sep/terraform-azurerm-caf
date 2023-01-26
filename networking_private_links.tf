@@ -1,5 +1,5 @@
 module "private_endpoints" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/private_links/endpoints"
+  source   = "./modules/networking/private_links/endpoints"
   for_each = try(var.networking.private_endpoints, {})
 
   global_settings   = local.global_settings

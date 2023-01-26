@@ -1,6 +1,6 @@
 ##### azurerm_data_factory
 module "data_factory" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/data_factory"
+  source   = "./modules/data_factory/data_factory"
   for_each = local.data_factory.data_factory
 
   global_settings     = local.global_settings
@@ -28,7 +28,7 @@ output "data_factory" {
 
 ##### azurerm_data_factory_pipeline
 module "data_factory_pipeline" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/data_factory_pipeline"
+  source   = "./modules/data_factory/data_factory_pipeline"
   for_each = local.data_factory.data_factory_pipeline
 
   global_settings = local.global_settings
@@ -45,7 +45,7 @@ output "data_factory_pipeline" {
 
 ##### azurerm_data_factory_trigger_schedule
 module "data_factory_trigger_schedule" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/data_factory_trigger_schedule"
+  source   = "./modules/data_factory/data_factory_trigger_schedule"
   for_each = local.data_factory.data_factory_trigger_schedule
 
   global_settings = local.global_settings
@@ -63,7 +63,7 @@ output "data_factory_trigger_schedule" {
 }
 
 module "data_factory_integration_runtime_self_hosted" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/data_factory_integration_runtime_self_hosted"
+  source   = "./modules/data_factory/data_factory_integration_runtime_self_hosted"
   for_each = local.data_factory.data_factory_integration_runtime_self_hosted
 
   global_settings     = local.global_settings
@@ -82,7 +82,7 @@ output "data_factory_integration_runtime_self_hosted" {
 }
 
 module "data_factory_integration_runtime_azure_ssis" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/data_factory_integration_runtime_azure_ssis"
+  source   = "./modules/data_factory/data_factory_integration_runtime_azure_ssis"
   for_each = local.data_factory.data_factory_integration_runtime_azure_ssis
 
   global_settings = local.global_settings

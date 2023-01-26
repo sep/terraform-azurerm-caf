@@ -1,6 +1,6 @@
 ##### azurerm_data_factory
 module "data_factory_dataset_azure_blob" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/azure_blob"
+  source   = "./modules/data_factory/datasets/azure_blob"
   for_each = local.data_factory.datasets.azure_blob
 
   global_settings     = local.global_settings
@@ -17,7 +17,7 @@ output "data_factory_dataset_azure_blob" {
 
 ##### azurerm_data_factory_dataset_cosmosdb_sqlapi
 module "data_factory_dataset_cosmosdb_sqlapi" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/cosmosdb_sqlapi"
+  source = "./modules/data_factory/datasets/cosmosdb_sqlapi"
 
   for_each = local.data_factory.datasets.cosmosdb_sqlapi
 
@@ -35,7 +35,7 @@ output "data_factory_dataset_cosmosdb_sqlapi" {
 
 ##### azurerm_data_factory_dataset_delimited_text
 module "data_factory_dataset_delimited_text" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/delimited_text"
+  source = "./modules/data_factory/datasets/delimited_text"
 
   for_each = local.data_factory.datasets.delimited_text
 
@@ -54,7 +54,7 @@ output "data_factory_dataset_delimited_text" {
 
 ##### azurerm_data_factory_dataset_http
 module "data_factory_dataset_http" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/http"
+  source   = "./modules/data_factory/datasets/http"
   for_each = local.data_factory.datasets.http
 
   global_settings     = local.global_settings
@@ -72,7 +72,7 @@ output "data_factory_dataset_http" {
 
 ##### azurerm_data_factory_dataset_json
 module "data_factory_dataset_json" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/json"
+  source   = "./modules/data_factory/datasets/json"
   for_each = local.data_factory.datasets.json
 
   global_settings     = local.global_settings
@@ -90,7 +90,7 @@ output "data_factory_dataset_json" {
 
 ##### azurerm_data_factory_dataset_mysql
 module "data_factory_dataset_mysql" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/mysql"
+  source   = "./modules/data_factory/datasets/mysql"
   for_each = local.data_factory.datasets.mysql
 
   global_settings     = local.global_settings
@@ -108,7 +108,7 @@ output "data_factory_dataset_mysql" {
 
 ##### azurerm_data_factory_dataset_postgresql
 module "data_factory_dataset_postgresql" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/postgresql"
+  source   = "./modules/data_factory/datasets/postgresql"
   for_each = local.data_factory.datasets.postgresql
 
   global_settings     = local.global_settings
@@ -126,7 +126,7 @@ output "data_factory_dataset_postgresql" {
 
 ##### azurerm_data_factory_dataset_sql_server_table
 module "data_factory_dataset_sql_server_table" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/data_factory/datasets/sql_server_table"
+  source = "./modules/data_factory/datasets/sql_server_table"
 
   for_each = local.data_factory.datasets.sql_server_table
 

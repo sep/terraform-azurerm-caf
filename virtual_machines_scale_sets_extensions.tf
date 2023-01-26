@@ -1,5 +1,5 @@
 module "vmss_extension_custom_scriptextension" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -16,7 +16,7 @@ module "vmss_extension_custom_scriptextension" {
 }
 
 module "vmss_extension_microsoft_azure_domainjoin" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -32,7 +32,7 @@ module "vmss_extension_microsoft_azure_domainjoin" {
 
 
 module "vmss_extension_microsoft_monitoring_agent" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -48,7 +48,7 @@ module "vmss_extension_microsoft_monitoring_agent" {
 }
 
 module "vmss_extension_dependency_agent" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -63,7 +63,7 @@ module "vmss_extension_dependency_agent" {
 }
 
 module "vmss_extension_application_health_extension" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -78,7 +78,7 @@ module "vmss_extension_application_health_extension" {
 }
 
 module "vmss_extension_keyvault_extension" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -94,7 +94,7 @@ module "vmss_extension_keyvault_extension" {
 
 
 module "vmss_extension_custom_script_data_factory_self_hosted_runtime" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
 
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
@@ -115,7 +115,7 @@ module "vmss_extension_custom_script_data_factory_self_hosted_runtime" {
 }
 
 module "vmss_extension_generic" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/virtual_machine_scale_set_extensions"
+  source = "./modules/compute/virtual_machine_scale_set_extensions"
   for_each = {
     for key, value in try(local.compute.virtual_machine_scale_sets, {}) : key => value
     if try(value.virtual_machine_scale_set_extensions.generic_extensions, null) != null

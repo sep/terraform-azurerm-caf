@@ -1,5 +1,5 @@
 module "function_apps" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/function_app"
+  source     = "./modules/webapps/function_app"
   depends_on = [module.networking]
   for_each   = local.webapp.function_apps
 

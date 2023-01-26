@@ -1,5 +1,5 @@
 module "netapp_accounts" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/netapp"
+  source   = "./modules/netapp"
   for_each = local.storage.netapp_accounts
 
   global_settings     = local.global_settings

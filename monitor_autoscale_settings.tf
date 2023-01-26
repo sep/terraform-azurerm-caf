@@ -1,6 +1,6 @@
 module "monitor_autoscale_settings" {
   depends_on          = [module.virtual_machine_scale_sets, module.app_service_plans]
-  source              = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/monitor_autoscale_settings"
+  source              = "./modules/monitoring/monitor_autoscale_settings"
   for_each            = local.shared_services.monitor_autoscale_settings
   settings            = each.value
   global_settings     = local.global_settings

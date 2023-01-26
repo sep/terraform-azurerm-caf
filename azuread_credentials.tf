@@ -1,6 +1,6 @@
 # Module for the CAf variable azuread_apps
 module "azuread_credentials" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/azuread/credentials"
+  source     = "./modules/azuread/credentials"
   depends_on = [module.keyvault_access_policies]
   for_each   = local.azuread.azuread_credentials
 

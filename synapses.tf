@@ -1,5 +1,5 @@
 module "synapse_workspaces" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/analytics/synapse"
+  source     = "./modules/analytics/synapse"
   depends_on = [module.keyvault_access_policies, module.keyvault_access_policies_azuread_apps]
   for_each   = local.database.synapse_workspaces
 

@@ -1,5 +1,5 @@
 module "app_config" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/app_config"
+  source   = "./modules/databases/app_config"
   for_each = local.database.app_config
   name     = each.value.name
 

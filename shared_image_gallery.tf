@@ -1,5 +1,5 @@
 module "shared_image_galleries" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/shared_image_gallery/image_galleries"
+  source   = "./modules/shared_image_gallery/image_galleries"
   for_each = try(local.shared_services.shared_image_galleries, {})
 
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
@@ -16,7 +16,7 @@ module "shared_image_galleries" {
 }
 
 module "image_definitions" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/shared_image_gallery/image_definitions"
+  source   = "./modules/shared_image_gallery/image_definitions"
   for_each = try(local.shared_services.image_definitions, {})
 
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
@@ -35,7 +35,7 @@ output "image_definitions" {
 }
 
 module "packer_service_principal" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/shared_image_gallery/packer_service_principal"
+  source   = "./modules/shared_image_gallery/packer_service_principal"
   for_each = try(local.shared_services.packer_service_principal, {})
 
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
@@ -58,7 +58,7 @@ module "packer_service_principal" {
 }
 
 module "packer_build" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/shared_image_gallery/packer_build"
+  source   = "./modules/shared_image_gallery/packer_build"
   for_each = try(local.shared_services.packer_build, {})
 
   resource_group_name       = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name

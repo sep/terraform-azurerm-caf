@@ -4,7 +4,7 @@
 # This is only used here for examples to run
 # the normal recommendation for dynamic keyvault secrets is to call it from a landingzone
 module "dynamic_keyvault_secrets" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/dynamic_keyvault_secrets"
+  source     = "./modules/security/dynamic_keyvault_secrets"
   depends_on = [module.keyvaults]
   for_each = {
     for keyvault_key, secrets in try(var.security.dynamic_keyvault_secrets, {}) : keyvault_key => {

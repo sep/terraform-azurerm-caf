@@ -1,5 +1,5 @@
 module "batch_certificates" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/batch/batch_certificate"
+  source   = "./modules/compute/batch/batch_certificate"
   for_each = local.compute.batch_certificates
 
   global_settings = local.global_settings

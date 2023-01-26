@@ -5,7 +5,7 @@ output "postgresql_servers" {
 }
 
 module "postgresql_servers" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/postgresql_server"
+  source     = "./modules/databases/postgresql_server"
   depends_on = [module.keyvault_access_policies, module.keyvault_access_policies_azuread_apps]
   for_each   = local.database.postgresql_servers
 

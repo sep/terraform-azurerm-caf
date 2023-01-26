@@ -1,5 +1,5 @@
 module "application_security_groups" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/application_security_group"
+  source = "./modules/networking/application_security_group"
 
   for_each = local.networking.application_security_groups
 

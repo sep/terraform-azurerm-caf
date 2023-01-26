@@ -1,5 +1,5 @@
 module "consumption_budgets_resource_groups" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/consumption_budget/resource_group"
+  source = "./modules/consumption_budget/resource_group"
   for_each = {
     for key, value in local.shared_services.consumption_budgets : key => value
     if try(value.resource_group, null) != null
@@ -18,7 +18,7 @@ module "consumption_budgets_resource_groups" {
 }
 
 module "consumption_budgets_subscriptions" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/consumption_budget/subscription"
+  source = "./modules/consumption_budget/subscription"
   for_each = {
     for key, value in local.shared_services.consumption_budgets : key => value
     if try(value.subscription, null) != null

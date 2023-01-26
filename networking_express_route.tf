@@ -5,7 +5,7 @@
 #
 
 module "express_route_circuits" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/express_route_circuit"
+  source   = "./modules/networking/express_route_circuit"
   for_each = local.networking.express_route_circuits
 
   settings            = each.value
@@ -23,7 +23,7 @@ module "express_route_circuits" {
 #
 
 module "express_route_circuit_authorizations" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/express_route_circuit_authorization"
+  source   = "./modules/networking/express_route_circuit_authorization"
   for_each = local.networking.express_route_circuit_authorizations
 
   settings                   = each.value
@@ -38,7 +38,7 @@ module "express_route_circuit_authorizations" {
 #
 
 module "express_route_circuit_peerings" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/express_route_circuit_peering"
+  source   = "./modules/networking/express_route_circuit_peering"
   for_each = local.networking.express_route_circuit_peerings
 
   settings = each.value

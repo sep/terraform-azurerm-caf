@@ -1,5 +1,5 @@
 module "active_directory_domain_service" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/identity/active_directory_domain_service"
+  source   = "./modules/identity/active_directory_domain_service"
   for_each = local.identity.active_directory_domain_service
 
   # to destroy azuread_group at last
@@ -23,7 +23,7 @@ output "active_directory_domain_service" {
 
 
 module "active_directory_domain_service_replica_set" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/identity/active_directory_domain_service_replica_set"
+  source   = "./modules/identity/active_directory_domain_service_replica_set"
   for_each = local.identity.active_directory_domain_service_replica_set
 
   depends_on = [azurerm_virtual_network_peering.peering]

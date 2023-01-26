@@ -1,5 +1,5 @@
 module "backup_vaults" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/backup_vault"
+  source   = "./modules/backup_vault"
   for_each = local.data_protection.backup_vaults
 
   global_settings     = local.global_settings
@@ -19,7 +19,7 @@ output "backup_vaults" {
 }
 
 module "backup_vault_policies_blob_storage" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/backup_vault/backup_vault_policy_blob_storage"
+  source = "./modules/backup_vault/backup_vault_policy_blob_storage"
   for_each = {
     for key, value in local.data_protection.backup_vault_policies : key => value
     if value.type == "blob_storage"
@@ -31,7 +31,7 @@ module "backup_vault_policies_blob_storage" {
 }
 
 module "backup_vault_policies_disk" {
-  source = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/backup_vault/backup_vault_policy_disk"
+  source = "./modules/backup_vault/backup_vault_policy_disk"
   for_each = {
     for key, value in local.data_protection.backup_vault_policies : key => value
     if value.type == "disk"
@@ -51,7 +51,7 @@ output "backup_vault_policies" {
 }
 
 module "backup_vault_instances_blob_storage" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/backup_vault/backup_vault_instance_blob_storage"
+  source     = "./modules/backup_vault/backup_vault_instance_blob_storage"
   depends_on = [azurerm_role_assignment.for]
   for_each = {
     for key, value in local.data_protection.backup_vault_instances : key => value
@@ -66,7 +66,7 @@ module "backup_vault_instances_blob_storage" {
 }
 
 module "backup_vault_instances_disk" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/backup_vault/backup_vault_instance_disk"
+  source     = "./modules/backup_vault/backup_vault_instance_disk"
   depends_on = [azurerm_role_assignment.for]
   for_each = {
     for key, value in local.data_protection.backup_vault_instances : key => value

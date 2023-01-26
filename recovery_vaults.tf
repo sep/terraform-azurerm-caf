@@ -1,6 +1,6 @@
 
 module "recovery_vaults" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/recovery_vault"
+  source   = "./modules/recovery_vault"
   for_each = local.shared_services.recovery_vaults
 
   global_settings     = local.global_settings

@@ -1,5 +1,5 @@
 module "disk_encryption_sets" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/security/disk_encryption_set"
+  source   = "./modules/security/disk_encryption_set"
   for_each = local.security.disk_encryption_sets
 
   global_settings     = local.global_settings

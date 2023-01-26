@@ -1,5 +1,5 @@
 module "availability_sets" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/availability_set"
+  source   = "./modules/compute/availability_set"
   for_each = local.compute.availability_sets
 
   global_settings            = local.global_settings

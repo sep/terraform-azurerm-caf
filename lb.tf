@@ -1,5 +1,5 @@
 module "lb" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb"
+  source   = "./modules/networking/lb"
   for_each = local.networking.lb
 
   global_settings = local.global_settings
@@ -20,7 +20,7 @@ output "lb" {
 }
 
 module "lb_backend_address_pool" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_backend_address_pool"
+  source   = "./modules/networking/lb_backend_address_pool"
   for_each = local.networking.lb_backend_address_pool
 
   global_settings = local.global_settings
@@ -37,7 +37,7 @@ output "lb_backend_address_pool" {
 }
 
 module "lb_backend_address_pool_address" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_backend_address_pool_address"
+  source   = "./modules/networking/lb_backend_address_pool_address"
   for_each = local.networking.lb_backend_address_pool_address
 
   global_settings = local.global_settings
@@ -54,7 +54,7 @@ output "lb_backend_address_pool_address" {
 }
 
 module "lb_nat_pool" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_nat_pool"
+  source   = "./modules/networking/lb_nat_pool"
   for_each = local.networking.lb_nat_pool
 
   global_settings = local.global_settings
@@ -72,7 +72,7 @@ output "lb_nat_pool" {
   value = module.lb_nat_pool
 }
 module "lb_nat_rule" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_nat_rule"
+  source   = "./modules/networking/lb_nat_rule"
   for_each = local.networking.lb_nat_rule
 
   global_settings = local.global_settings
@@ -91,7 +91,7 @@ output "lb_nat_rule" {
 }
 
 module "lb_outbound_rule" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_outbound_rule"
+  source   = "./modules/networking/lb_outbound_rule"
   for_each = local.networking.lb_outbound_rule
 
   global_settings = local.global_settings
@@ -111,7 +111,7 @@ output "lb_outbound_rule" {
 }
 
 module "lb_probe" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_probe"
+  source   = "./modules/networking/lb_probe"
   for_each = local.networking.lb_probe
 
   global_settings = local.global_settings
@@ -129,7 +129,7 @@ output "lb_probe" {
   value = module.lb_probe
 }
 module "lb_rule" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/lb_rule"
+  source   = "./modules/networking/lb_rule"
   for_each = local.networking.lb_rule
 
   global_settings = local.global_settings

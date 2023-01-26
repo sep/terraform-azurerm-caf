@@ -10,7 +10,7 @@ output "nat_gateways" {
 }
 
 module "nat_gateways" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/nat_gateways"
+  source   = "./modules/networking/nat_gateways"
   for_each = try(local.networking.nat_gateways, {})
 
   settings                = each.value

@@ -1,5 +1,5 @@
 module "domain_name_registrations" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/domain_name_registrations"
+  source   = "./modules/networking/domain_name_registrations"
   for_each = try(local.networking.domain_name_registrations, {})
 
   base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}

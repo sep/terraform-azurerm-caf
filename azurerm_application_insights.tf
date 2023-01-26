@@ -1,5 +1,5 @@
 module "azurerm_application_insights" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/app_insights"
+  source   = "./modules/app_insights"
   for_each = local.webapp.azurerm_application_insights
 
   prefix                                = local.global_settings.prefix
@@ -27,7 +27,7 @@ output "application_insights" {
 }
 
 module "azurerm_application_insights_web_test" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/app_insights/web_test"
+  source   = "./modules/app_insights/web_test"
   for_each = local.webapp.azurerm_application_insights_web_test
 
   name                    = lookup(each.value, "name", null)

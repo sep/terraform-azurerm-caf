@@ -28,7 +28,7 @@ output "network_watchers" {
 
 module "networking" {
   depends_on = [module.network_watchers]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_network"
+  source     = "./modules/networking/virtual_network"
   for_each   = local.networking.vnets
 
   application_security_groups       = local.combined_objects_application_security_groups
@@ -62,7 +62,7 @@ module "networking" {
 
 module "virtual_subnets" {
   depends_on = [module.networking]
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/virtual_network/subnet"
+  source     = "./modules/networking/virtual_network/subnet"
   for_each   = local.networking.virtual_subnets
 
   global_settings = local.global_settings
@@ -120,7 +120,7 @@ resource "azurecaf_name" "public_ip_addresses" {
 }
 
 module "public_ip_addresses" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/public_ip_addresses"
+  source   = "./modules/networking/public_ip_addresses"
   for_each = local.networking.public_ip_addresses
 
   name                       = azurecaf_name.public_ip_addresses[each.key].result
@@ -166,7 +166,7 @@ resource "azurecaf_name" "public_ip_prefixes" {
 }
 
 module "public_ip_prefixes" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/public_ip_prefixes"
+  source   = "./modules/networking/public_ip_prefixes"
   for_each = local.networking.public_ip_prefixes
 
   name                = azurecaf_name.public_ip_prefixes[each.key].result
@@ -262,7 +262,7 @@ resource "azurecaf_name" "route_tables" {
 }
 
 module "route_tables" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/route_tables"
+  source   = "./modules/networking/route_tables"
   for_each = local.networking.route_tables
 
   name                          = azurecaf_name.route_tables[each.key].result
@@ -287,7 +287,7 @@ resource "azurecaf_name" "routes" {
 
 
 module "routes" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/routes"
+  source   = "./modules/networking/routes"
   for_each = local.networking.azurerm_routes
 
   name                   = azurecaf_name.routes[each.key].result
@@ -341,7 +341,7 @@ output "ddos_services" {
 #
 #
 module "network_watchers" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/network_watcher"
+  source   = "./modules/networking/network_watcher"
   for_each = local.networking.network_watchers
 
   location            = can(local.global_settings.regions[each.value.region]) ? local.global_settings.regions[each.value.region] : local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].location
@@ -356,7 +356,7 @@ module "network_watchers" {
 
 
 module "relay_hybrid_connection" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/relay_hybrid_connection"
+  source   = "./modules/networking/relay_hybrid_connection"
   for_each = local.networking.relay_hybrid_connection
 
   global_settings     = local.global_settings
@@ -374,7 +374,7 @@ output "relay_hybrid_connection" {
 }
 
 module "relay_namespace" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/networking/relay_namespace"
+  source   = "./modules/networking/relay_namespace"
   for_each = local.networking.relay_namespace
 
   global_settings = local.global_settings

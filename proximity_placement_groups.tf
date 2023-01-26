@@ -1,7 +1,7 @@
 
 
 module "proximity_placement_groups" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/compute/proximity_placement_group"
+  source   = "./modules/compute/proximity_placement_group"
   for_each = local.compute.proximity_placement_groups
 
   global_settings     = local.global_settings

@@ -2,7 +2,7 @@
 # Ref : https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/
 
 module "app_services" {
-  source     = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/webapps/appservice"
+  source     = "./modules/webapps/appservice"
   depends_on = [module.networking]
   for_each   = local.webapp.app_services
 

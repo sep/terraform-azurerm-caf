@@ -1,5 +1,5 @@
 module "kusto_clusters" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/data_explorer/kusto_clusters"
+  source   = "./modules/databases/data_explorer/kusto_clusters"
   for_each = local.database.data_explorer.kusto_clusters
 
   global_settings     = local.global_settings
@@ -20,7 +20,7 @@ output "kusto_clusters" {
 }
 
 module "kusto_databases" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/data_explorer/kusto_databases"
+  source   = "./modules/databases/data_explorer/kusto_databases"
   for_each = local.database.data_explorer.kusto_databases
 
   global_settings     = local.global_settings
@@ -36,7 +36,7 @@ output "kusto_databases" {
 }
 
 module "kusto_attached_database_configurations" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/data_explorer/kusto_attached_database_configurations"
+  source   = "./modules/databases/data_explorer/kusto_attached_database_configurations"
   for_each = local.database.data_explorer.kusto_attached_database_configurations
 
   global_settings = local.global_settings
@@ -54,7 +54,7 @@ output "kusto_attached_database_configurations" {
   value = module.kusto_attached_database_configurations
 }
 module "kusto_database_principal_assignments" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/data_explorer/kusto_database_principal_assignments"
+  source   = "./modules/databases/data_explorer/kusto_database_principal_assignments"
   for_each = local.database.data_explorer.kusto_database_principal_assignments
 
   global_settings     = local.global_settings

@@ -4,7 +4,7 @@ output "mssql_databases" {
 }
 
 module "mssql_databases" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/databases/mssql_database"
+  source   = "./modules/databases/mssql_database"
   for_each = local.database.mssql_databases
 
   global_settings     = local.global_settings

@@ -1,5 +1,5 @@
 module "service_health_alerts" {
-  source              = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/service_health_alerts"
+  source              = "./modules/monitoring/service_health_alerts"
   for_each            = local.shared_services.monitoring
   global_settings     = local.global_settings
   settings            = each.value
@@ -9,7 +9,7 @@ module "service_health_alerts" {
 }
 
 module "monitor_metric_alert" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/monitor_metric_alert"
+  source   = "./modules/monitoring/monitor_metric_alert"
   for_each = local.shared_services.monitor_metric_alert
 
   global_settings = local.global_settings
@@ -25,7 +25,7 @@ output "monitor_metric_alert" {
 }
 
 module "monitor_activity_log_alert" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/monitoring/monitor_activity_log_alert"
+  source   = "./modules/monitoring/monitor_activity_log_alert"
   for_each = local.shared_services.monitor_activity_log_alert
 
   global_settings     = local.global_settings

@@ -1,5 +1,5 @@
 module "machine_learning_workspaces" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/analytics/machine_learning"
+  source   = "./modules/analytics/machine_learning"
   for_each = local.database.machine_learning_workspaces
 
   client_config           = local.client_config
@@ -20,7 +20,7 @@ output "machine_learning_workspaces" {
 }
 
 module "machine_learning_compute_instance" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/analytics/machine_learning_compute_instance"
+  source   = "./modules/analytics/machine_learning_compute_instance"
   for_each = local.compute.machine_learning_compute_instance
 
   global_settings = local.global_settings

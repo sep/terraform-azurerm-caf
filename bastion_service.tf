@@ -47,7 +47,7 @@ resource "azurerm_bastion_host" "host" {
 }
 
 module "bastion_host_diagnostics" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
+  source   = "./modules/diagnostics"
   for_each = try(local.compute.bastion_hosts, {})
 
   resource_id = azurerm_bastion_host.host[each.key].id

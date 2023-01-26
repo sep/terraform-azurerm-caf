@@ -1,5 +1,5 @@
 module "communication_services" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/communication/communication_services"
+  source   = "./modules/communication/communication_services"
   for_each = try(local.communication.communication_services, {})
 
   global_settings     = local.global_settings
@@ -15,7 +15,7 @@ output "communication_services" {
 }
 
 module "communication_services_diagnostics" {
-  source   = "git::https://github.com/sep/terraform-azurerm-caf.git//modules/diagnostics"
+  source   = "./modules/diagnostics"
   for_each = local.communication.communication_services
 
   resource_id       = module.communication_services[each.key].id

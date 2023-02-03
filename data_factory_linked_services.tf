@@ -136,9 +136,9 @@ module "data_factory_linked_service_azure_sql_database" {
   
   additional_properties = {}
   
-  description = {}
-  parameters = {}
-  annotations = {}
+  description = try( each.value.description, "")
+  parameters = try( each.value.parameters, {})
+  annotations =  try( each.value.annotations, [])
 }
 output "data_factory_linked_service_azure_sql_database" {
   value = module.data_factory_linked_service_azure_sql_database

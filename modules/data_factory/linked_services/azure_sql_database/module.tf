@@ -11,7 +11,7 @@ resource "azurerm_data_factory_linked_service_azure_sql_database" "linked_servic
   name                     = azurecaf_name.lsasd.name
   resource_group_name      = var.resource_group_name
   data_factory_id          = var.data_factory_id
-  description              = try(var.description, null)
+  description              = try(var.settings.description, null)
   integration_runtime_name = try(var.integration_runtime_name, null)
   annotations              = try(var.annotations, null)
   parameters               = try(var.parameters, null)

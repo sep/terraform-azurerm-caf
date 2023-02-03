@@ -33,3 +33,7 @@ variable "parameters" {
 variable "additional_properties" {
   description = "(Optional) A map of additional properties to associate with the Data Factory Linked Service Azure SQL Database."
 }
+
+variable "global_settings" {
+  description = "global settings"
+}

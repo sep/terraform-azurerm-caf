@@ -16,5 +16,6 @@ resource "azurerm_data_factory_linked_service_azure_sql_database" "linked_servic
   annotations              = try(var.settings.annotations, null)
   parameters               = try(var.settings.parameters, null)
   additional_properties    = try(var.settings.additional_properties, null)
+  use_managed_identity     = try(var.settings.use_managed_identity, null)
   connection_string        = var.connection_string
 }

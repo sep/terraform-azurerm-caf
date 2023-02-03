@@ -1,7 +1,3 @@
-variable "name" {
-  description = "(Required) Specifies the name of the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created. Must be globally unique."
-}
-
 variable "resource_group_name" {
   description = "(Required) The name of the resource group in which to create the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created."
 }

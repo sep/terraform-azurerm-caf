@@ -1,3 +1,7 @@
+variable "settings" {
+  description = "Used for general parameter."
+}
+
 variable "resource_group_name" {
   description = "(Required) The name of the resource group in which to create the Data Factory Linked Service Azure SQL Database. Changing this forces a new resource to be created."
 }

@@ -136,7 +136,6 @@ module "data_factory_linked_service_azure_sql_database" {
   
   additional_properties = {}
   
-  description = try( each.value.description, "")
   parameters = try( each.value.parameters, {})
   annotations =  try( each.value.annotations, [])
 }

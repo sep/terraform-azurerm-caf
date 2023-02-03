@@ -14,18 +14,6 @@ variable "connection_string" {
   description = "(Required) The connection string in which to authenticate with Azure SQL Database."
 }
 
-variable "description" {
-  description = "(Optional) The description for the Data Factory Linked Service Azure SQL Database."
-}
-
-variable "integration_runtime_name" {
-  description = "(Optional) The integration runtime reference to associate with the Data Factory Linked Service Azure SQL Database."
-}
-
-variable "annotations" {
-  description = "(Optional) List of tags that can be used for describing the Data Factory Linked Service Azure SQL Database."
-}
-
 variable "parameters" {
   description = "(Optional) A map of parameters to associate with the Data Factory Linked Service Azure SQL Database."
 }

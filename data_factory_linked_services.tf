@@ -136,7 +136,6 @@ module "data_factory_linked_service_azure_sql_database" {
   description = {}
   parameters = {}
   annotations = {}
-  name = each.value.name
 }
 output "data_factory_linked_service_azure_sql_database" {
   value = module.data_factory_linked_service_azure_sql_database

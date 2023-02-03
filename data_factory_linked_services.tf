@@ -109,6 +109,22 @@ module "data_factory_linked_service_sql_server" {
 output "data_factory_linked_service_sql_server" {
   value = module.data_factory_linked_service_sql_server
 }
+  
+module "data_factory_linked_service_azure_sql_database" {
+  source   = "./modules/data_factory/linked_services/azure_sql_database"
+  for_each = local.data_factory.linked_services.azure_sql_database
+
+  global_settings     = local.global_settings
+  client_config       = local.client_config
+  settings            = each.value
+  resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(local.client_config.landingzone_key, each.value.resource_group.lz_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
+  data_factory_id     = can(each.value.data_factory.id) ? each.value.data_factory.id : local.combined_objects_data_factory[try(local.client_config.landingzone_key, each.value.data_factory.lz_key)][try(each.value.data_factory.key, each.value.data_factory_key)].id
+
+  #connection_string = try(each.value.lz_key, null) == null ? local.combined_objects_cosmos_dbs[local.client_config.landingzone_key][each.value.cosmos_db_key].name : local.combined_objects_cosmos_dbs[each.value.lz_key][each.value.cosmos_db_key].connection_string
+}
+output "data_factory_linked_service_azure_sql_database" {
+  value = module.data_factory_linked_service_azure_sql_database
+}
 
 module "data_factory_linked_service_azure_databricks" {
   source   = "./modules/data_factory/linked_services/azure_databricks"

@@ -114,13 +114,29 @@ module "data_factory_linked_service_azure_sql_database" {
   source   = "./modules/data_factory/linked_services/azure_sql_database"
   for_each = local.data_factory.linked_services.azure_sql_database
 
-  global_settings     = local.global_settings
-  client_config       = local.client_config
-  settings            = each.value
+  #client_config       = local.client_config
+  #settings            = each.value
   resource_group_name = can(each.value.resource_group.name) || can(each.value.resource_group_name) ? try(each.value.resource_group.name, each.value.resource_group_name) : local.combined_objects_resource_groups[try(local.client_config.landingzone_key, each.value.resource_group.lz_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
   data_factory_id     = can(each.value.data_factory.id) ? each.value.data_factory.id : local.combined_objects_data_factory[try(local.client_config.landingzone_key, each.value.data_factory.lz_key)][try(each.value.data_factory.key, each.value.data_factory_key)].id
 
-  #connection_string = try(each.value.lz_key, null) == null ? local.combined_objects_cosmos_dbs[local.client_config.landingzone_key][each.value.cosmos_db_key].name : local.combined_objects_cosmos_dbs[each.value.lz_key][each.value.cosmos_db_key].connection_string
+  integration_runtime_name = try(coalesce(
+    try(local.combined_objects_data_factory_integration_runtime_self_hosted[each.value.integration_runtime.data_factory_integration_runtime_self_hosted.lz_key][each.value.integration_runtime.data_factory_integration_runtime_self_hosted.key].name, null),
+    try(local.combined_objects_data_factory_integration_runtime_self_hosted[local.client_config.landingzone_key][each.value.integration_runtime.data_factory_integration_runtime_self_hosted.key].name, null),
+    try(each.value.integration_runtime.data_factory_integration_runtime_self_hosted.name, null),
+    try(local.combined_objects_data_factory_integration_runtime_azure_ssis[each.value.integration_runtime.combined_objects_data_factory_integration_runtime_azure_ssis.lz_key][each.value.integration_runtime.combined_objects_data_factory_integration_runtime_azure_ssis.key].name, null),
+    try(local.combined_objects_data_factory_integration_runtime_azure_ssis[local.client_config.landingzone_key][each.value.integration_runtime.combined_objects_data_factory_integration_runtime_azure_ssis.key].name, null),
+    try(each.value.integration_runtime.combined_objects_data_factory_integration_runtime_azure_ssis.name, null)
+    ), null
+  )  
+  
+  connection_string = try(each.value.lz_key, null) == null ? local.combined_objects_cosmos_dbs[local.client_config.landingzone_key][each.value.cosmos_db_key].name : local.combined_objects_cosmos_dbs[each.value.lz_key][each.value.cosmos_db_key].connection_string
+
+  additional_properties = {}
+  
+  description = {}
+  parameters = {}
+  annotations = {}
+  name = each.value.name
 }
 output "data_factory_linked_service_azure_sql_database" {
   value = module.data_factory_linked_service_azure_sql_database

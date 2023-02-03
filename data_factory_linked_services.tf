@@ -130,7 +130,7 @@ module "data_factory_linked_service_azure_sql_database" {
     ), null
   )  
 
-  connection_string = "Server=${local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.database_server_key].name}.database.windows.net,1433;Database=${local.combined_objects_mssql_databases[local.client_config.landingzone_key][each.value.database_key].name};Authentication=Active Directory Default"
+  connection_string = "Server=${local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.database_server_key].name}.database.windows.net,1433;Database=${local.combined_objects_mssql_databases[local.client_config.landingzone_key][each.value.database_key].name};Authentication=Active Directory Managed Identity"
 }
 output "data_factory_linked_service_azure_sql_database" {
   value = module.data_factory_linked_service_azure_sql_database

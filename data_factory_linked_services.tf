@@ -129,15 +129,8 @@ module "data_factory_linked_service_azure_sql_database" {
     try(each.value.integration_runtime.combined_objects_data_factory_integration_runtime_azure_ssis.name, null)
     ), null
   )  
-  
-  #connection_string = try(each.value.lz_key, null) == null ? local.combined_objects_cosmos_dbs[local.client_config.landingzone_key][each.value.cosmos_db_key].name : local.combined_objects_cosmos_dbs[each.value.lz_key][each.value.cosmos_db_key].connection_string
 
   connection_string = "Server=${local.combined_objects_mssql_servers[local.client_config.landingzone_key][each.value.database_server_key].name}.database.windows.net,1433;Database=${local.combined_objects_mssql_databases[local.client_config.landingzone_key][each.value.database_key].name};Authentication=Active Directory Default"
-  
-  additional_properties = {}
-  
-  parameters = try( each.value.parameters, {})
-  annotations =  try( each.value.annotations, [])
 }
 output "data_factory_linked_service_azure_sql_database" {
   value = module.data_factory_linked_service_azure_sql_database

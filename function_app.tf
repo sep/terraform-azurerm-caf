@@ -15,8 +15,11 @@ module "function_apps" {
   application_insight        = try(each.value.application_insight_key, null) == null ? null : module.azurerm_application_insights[each.value.application_insight_key]
   identity                   = try(each.value.identity, null)
   connection_strings         = try(each.value.connection_strings, {})
-  storage_account_name       = try(data.azurerm_storage_account.function_apps[each.key].name, null)
-  storage_account_access_key = try(data.azurerm_storage_account.function_apps[each.key].primary_access_key, null)
+  storage_account_name       = local.combined_objects_storage_accounts[try(each.value.storage_account.lz_key, local.client_config.landingzone_key)][each.value.storage_account.key].name
+  storage_account_access_key = local.combined_objects_storage_accounts[try(each.value.storage_account.lz_key, local.client_config.landingzone_key)][each.value.storage_account.key].primary_access_key
+
+  #storage_account_name       = try(data.azurerm_storage_account.function_apps[each.key].name, null)
+  #storage_account_access_key = try(data.azurerm_storage_account.function_apps[each.key].primary_access_key, null)
   # subnet_id = try(
   #                 each.value.subnet_id,
   #                 local.combined_objects_networking[try(each.value.settings.lz_key, local.client_config.landingzone_key)][each.value.settings.vnet_key].subnets[each.value.settings.subnet_key].id,

@@ -14,14 +14,6 @@ variable "connection_string" {
   description = "(Required) The connection string in which to authenticate with Azure SQL Database."
 }
 
-variable "parameters" {
-  description = "(Optional) A map of parameters to associate with the Data Factory Linked Service Azure SQL Database."
-}
-
-variable "additional_properties" {
-  description = "(Optional) A map of additional properties to associate with the Data Factory Linked Service Azure SQL Database."
-}
-
 variable "global_settings" {
   description = "global settings"
 }

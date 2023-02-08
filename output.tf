@@ -11,3 +11,7 @@ output "client_config" {
 output "global_settings" {
   value = local.global_settings
 }
+
+output "webapps" {
+  value = local.webapp
+}

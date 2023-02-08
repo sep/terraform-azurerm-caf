@@ -371,7 +371,7 @@ locals {
     storage_containers     = try(var.storage.storage_containers, {})
   }
 
-  webapp = {
+  webapp = merge(var.webapp, {
     app_service_environments                       = try(var.webapp.app_service_environments, {})
     app_service_environments_v3                    = try(var.webapp.app_service_environments_v3, {})
     app_service_plans                              = try(var.webapp.app_service_plans, {})
@@ -381,7 +381,7 @@ locals {
     azurerm_application_insights_standard_web_test = try(var.webapp.azurerm_application_insights_standard_web_test, {})
     function_apps                                  = try(var.webapp.function_apps, {})
     static_sites                                   = try(var.webapp.static_sites, {})
-  }
+  } } )
 
   enable = {
     bastion_hosts    = try(var.enable.bastion_hosts, true)
